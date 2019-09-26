@@ -26,8 +26,12 @@ public class JavaOrJSOrCPlusPlugin extends Plugin{
                     DoubleSlash = true;
                     SingleComNum++;
                 }
-                // "TODO" appear in the middle of comment
+                // "TODO" appear in the middle of the single comment
                 if(DoubleSlash && (word.startsWith("TODO:") || word == "TODO")){
+                    TODONum++;
+                }
+                // "TODO" appear in the middle of the multiline comment
+                if(SlashStar && (word.startsWith("TODO:") || word == "TODO")){
                     TODONum++;
                 }
 
@@ -36,11 +40,17 @@ public class JavaOrJSOrCPlusPlugin extends Plugin{
                     // only if /* or /** is not a part of block comment content, we add MultiComNum; Otherwise this line will be counted twice.
                     if(SlashStar == false) MultiComNum++;
                     SlashStar =true;
+                    if (word.indexOf("") + 1 == word.indexOf("TODO:") || word.endsWith("/*TODO")){
+                        TODONum++;
+                    }
                 }
                 // indicate the ending of the block comment
                 if(word.contains("*/") && SlashStar ==true) {
                     BlockNum++;
                     SlashStar = false;
+                    if (word.indexOf("TODO:") + 4 < word.indexOf("*/")){
+                        TODONum++;
+                    }
                 }
 
             }
