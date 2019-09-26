@@ -5,5 +5,5 @@ Assumption:
 
 How to run this program:
 Please use a Java IDE such as IntelliJ or Eclipse.
-1. you need to put the input file inside the InputFile folder.
-2. When you run this program, you should pass the file name(including extension) of your input file as its only parameter.
+1. <mark>You need to put the input file inside the InputFile folder</mark> before run this program.
+2. When you run this program, <mark>you should pass the file name(including extension) of your input file as its only parameter</mark>.
